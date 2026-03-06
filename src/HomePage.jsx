@@ -7,6 +7,7 @@ import Taskbar from "./components/ui/Taskbar";
 import AboutMe from "./components/AboutMe";
 import Tableau from "./components/Tableau";
 import WorkingOn from "./components/WorkingOn";
+import Gallery from "./components/Gallery";
 //image imports (if needed)
 import tateImage from "./assets/images/tate.jpeg";
 import Background from "./assets/ui/Bliss.jpeg";
@@ -19,6 +20,7 @@ const HomePage = () => {
         aboutMe: false,
         tableau: false,
         workingOn: false,
+        gallery: false
     });
 
     //start menu items
@@ -27,6 +29,7 @@ const HomePage = () => {
         aboutMe: ["aboutMe"],
         tableau: ["tableau"],
         workingOn: ["workingOn"],
+        gallery: ["gallery"],
     };
     
     //event handler for start menu item selection
@@ -90,6 +93,12 @@ const HomePage = () => {
                 <WorkingOn
                     title="Current Projects"
                     onClose={() => handleWindowClose("workingOn")}
+                />
+            )}
+            {windowVisibility.gallery && (
+                <Gallery
+                    title="Photo Gallery"
+                    onClose={() => handleWindowClose("gallery")}
                 />
             )}
             <Taskbar onMenuItemSelect={handleMenuItemSelect} />

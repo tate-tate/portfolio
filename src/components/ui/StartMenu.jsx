@@ -4,6 +4,7 @@ import AddressBook from "../../assets/ui/AddressBook.png";
 import Home from "../../assets/ui/Home.png";
 import DiskDefragmenter from "../../assets/ui/DiskDefragmenter.png";
 import IEEdit from "../../assets/ui/IEEdit.png";
+import TIFF from "../../assets/ui/TIFF.png";
 
 const StartMenu = ({ onMenuItemSelect, onRequestClose }) => {
     const nodeRef = React.useRef(null);
@@ -13,6 +14,7 @@ const StartMenu = ({ onMenuItemSelect, onRequestClose }) => {
         { id: "aboutMe", label: "About Me", icon: AddressBook },
         { id: "tableau", label: "Tableau", icon: DiskDefragmenter },
         { id: "workingOn", label: "Working On", icon: IEEdit },
+        { id: "gallery", label: "Gallery", icon: TIFF },
     ];
 
     const handleItemClick = (itemId) => {
