@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-windows-xp": "^0.7.1",
+    "xp.css": "^0.2.6"
+  }
+}
