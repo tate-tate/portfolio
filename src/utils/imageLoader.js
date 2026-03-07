@@ -7,9 +7,16 @@ const importImages = () => {
         { eager: true, import: 'default' }
     );
 
-    return Object.entries(images)
+    const sortedImages = Object.entries(images)
         .sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }))
         .map(([, path]) => path);
+
+    // Organize images by location prefix
+    return {
+        pittsburgh: sortedImages.filter(path => path.includes('pitt')),
+        gary: sortedImages.filter(path => path.includes('gary')),
+        all: sortedImages
+    };
 };
 
 export default importImages;

@@ -5,6 +5,8 @@ import Home from "../../assets/ui/Home.png";
 import DiskDefragmenter from "../../assets/ui/DiskDefragmenter.png";
 import IEEdit from "../../assets/ui/IEEdit.png";
 import TIFF from "../../assets/ui/TIFF.png";
+import Messenger from "../../assets/ui/Messenger.png";
+import XPSViewer from "../../assets/ui/XPSViewer.png";
 
 const StartMenu = ({ onMenuItemSelect, onRequestClose }) => {
     const nodeRef = React.useRef(null);
@@ -15,10 +17,27 @@ const StartMenu = ({ onMenuItemSelect, onRequestClose }) => {
         { id: "tableau", label: "Tableau", icon: DiskDefragmenter },
         { id: "workingOn", label: "Working On", icon: IEEdit },
         { id: "gallery", label: "Gallery", icon: TIFF },
+        {
+            id: "messenger",
+            label: "LinkedIn",
+            icon: Messenger,
+            href: "https://www.linkedin.com/in/gabriel-sever-dvis/"
+        },
+        { id: "contact", 
+          label: "Contact Me", 
+          icon: XPSViewer,
+          href: "mailto:gabrieltsever@gmail.com"
+        },
+        
     ];
 
-    const handleItemClick = (itemId) => {
-        if (onMenuItemSelect) onMenuItemSelect(itemId);
+    const handleItemClick = (item) => {
+        if (item.href) {
+            window.open(item.href, "_blank", "noopener,noreferrer");
+        } else if (onMenuItemSelect) {
+            onMenuItemSelect(item.id);
+        }
+
         if (onRequestClose) onRequestClose();
     };
 
@@ -52,7 +71,7 @@ const StartMenu = ({ onMenuItemSelect, onRequestClose }) => {
                                 alignItems: "center",
                                 gap: "8px",
                             }}
-                            onClick={() => handleItemClick(item.id)}
+                            onClick={() => handleItemClick(item)}
                         >
                             <img
                                 src={item.icon}

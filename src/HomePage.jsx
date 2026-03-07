@@ -14,6 +14,17 @@ import Background from "./assets/ui/Bliss.jpeg";
 
 
 const HomePage = () => {
+    // Track which windows have been opened (mounted) at least once
+    const [mountedWindows, setMountedWindows] = useState({
+        portrait: true,
+        infoText: true,
+        aboutMe: false,
+        tableau: false,
+        workingOn: false,
+        gallery: false
+    });
+
+    // Track which mounted windows are currently visible
     const [windowVisibility, setWindowVisibility] = useState({
         portrait: true,
         infoText: true,
@@ -38,6 +49,15 @@ const HomePage = () => {
 
         if (!targets.length) return;
 
+        // Mount components if not already mounted, and make them visible
+        setMountedWindows((prev) => {
+            const next = { ...prev };
+            targets.forEach((target) => {
+                next[target] = true;
+            });
+            return next;
+        });
+
         setWindowVisibility((prev) => {
             const next = { ...prev };
             targets.forEach((target) => {
@@ -46,8 +66,10 @@ const HomePage = () => {
             return next;
         });
     };
+    
     //event handler for closing windows
     const handleWindowClose = (windowKey) => {
+        // Only hide, don't unmount (preserves state and avoids re-loading)
         setWindowVisibility((prev) => ({ ...prev, [windowKey]: false }));
     };
 
@@ -63,43 +85,55 @@ const HomePage = () => {
                 backgroundAttachment: "fixed",
             }}
         >
-            {windowVisibility.portrait && (
-                <Portrait
-                    title="tate.jpeg"
-                    src={tateImage}
-                    alt="Tate"
-                    onClose={() => handleWindowClose("portrait")}
-                />
+            {mountedWindows.portrait && (
+                <div style={{ display: windowVisibility.portrait ? 'block' : 'none' }}>
+                    <Portrait
+                        title="tate.jpeg"
+                        src={tateImage}
+                        alt="Tate"
+                        onClose={() => handleWindowClose("portrait")}
+                    />
+                </div>
             )}
-            {windowVisibility.infoText && (
-                <InfoText
-                    title="About Me"
-                    onClose={() => handleWindowClose("infoText")}
-                />
+            {mountedWindows.infoText && (
+                <div style={{ display: windowVisibility.infoText ? 'block' : 'none' }}>
+                    <InfoText
+                        title="About Me"
+                        onClose={() => handleWindowClose("infoText")}
+                    />
+                </div>
             )}
-            {windowVisibility.aboutMe && (
-                <AboutMe
-                    title="About"
-                    onClose={() => handleWindowClose("aboutMe")}
-                />
+            {mountedWindows.aboutMe && (
+                <div style={{ display: windowVisibility.aboutMe ? 'block' : 'none' }}>
+                    <AboutMe
+                        title="About"
+                        onClose={() => handleWindowClose("aboutMe")}
+                    />
+                </div>
             )}
-            {windowVisibility.tableau && (
-                <Tableau
-                    title="Tableau"
-                    onClose={() => handleWindowClose("tableau")}
-                />
+            {mountedWindows.tableau && (
+                <div style={{ display: windowVisibility.tableau ? 'block' : 'none' }}>
+                    <Tableau
+                        title="Tableau"
+                        onClose={() => handleWindowClose("tableau")}
+                    />
+                </div>
             )}
-            {windowVisibility.workingOn && (
-                <WorkingOn
-                    title="Current Projects"
-                    onClose={() => handleWindowClose("workingOn")}
-                />
+            {mountedWindows.workingOn && (
+                <div style={{ display: windowVisibility.workingOn ? 'block' : 'none' }}>
+                    <WorkingOn
+                        title="Current Projects"
+                        onClose={() => handleWindowClose("workingOn")}
+                    />
+                </div>
             )}
-            {windowVisibility.gallery && (
-                <Gallery
-                    title="Photo Gallery"
-                    onClose={() => handleWindowClose("gallery")}
-                />
+            {mountedWindows.gallery && (
+                <div style={{ display: windowVisibility.gallery ? 'block' : 'none' }}>
+                    <Gallery
+                        title="Photo Gallery"
+                        onClose={() => handleWindowClose("gallery")}
+                    />
+                </div>
             )}
             <Taskbar onMenuItemSelect={handleMenuItemSelect} />
         </div>
