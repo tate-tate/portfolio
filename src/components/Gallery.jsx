@@ -58,6 +58,7 @@ const Gallery = ({ title, onClose }) => {
                 <div className="window-body" style={{ height: '95%', overflowY: 'scroll', paddingRight: '10px', paddingLeft: '10px' }}>
                     <h1 className="gallery-h1">Photo Gallery</h1>
                     <p className='subheading'>Double-click on any thumbnail to open the image in a new window.</p>
+                    <p className="subtitle">If you want to view the images in full-quality, right click them after opening and select "open in new tab :)" </p>
 
 
                     <div className="pittsburgh-gallery">
