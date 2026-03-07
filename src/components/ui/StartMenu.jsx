@@ -7,6 +7,7 @@ import IEEdit from "../../assets/ui/IEEdit.png";
 import TIFF from "../../assets/ui/TIFF.png";
 import Messenger from "../../assets/ui/Messenger.png";
 import XPSViewer from "../../assets/ui/XPSViewer.png";
+import TaskManager from "../../assets/ui/TaskManager.png";
 
 const StartMenu = ({ onMenuItemSelect, onRequestClose }) => {
     const nodeRef = React.useRef(null);
@@ -15,6 +16,11 @@ const StartMenu = ({ onMenuItemSelect, onRequestClose }) => {
         { id: "homeInfo", label: "Home", icon: Home },
         { id: "aboutMe", label: "About Me", icon: AddressBook },
         { id: "tableau", label: "Tableau", icon: DiskDefragmenter },
+        { id: "taskmanager",
+            label: "D3 Visualization Demo",
+            icon: TaskManager,
+            href: "https://tate-tate.github.io/tate-portfolio/#/d3-vis"
+        },
         { id: "workingOn", label: "Working On", icon: IEEdit },
         { id: "gallery", label: "Gallery", icon: TIFF },
         {
