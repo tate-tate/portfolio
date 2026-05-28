@@ -8,6 +8,7 @@ import AboutMe from "./components/AboutMe";
 import Tableau from "./components/Tableau";
 import WorkingOn from "./components/WorkingOn";
 import Gallery from "./components/Gallery";
+import Disclaimer from "./components/Disclaimer";
 //image imports (if needed)
 import tateImage from "./assets/images/tate.jpeg";
 import Background from "./assets/ui/Bliss.jpeg";
@@ -16,6 +17,7 @@ import Background from "./assets/ui/Bliss.jpeg";
 const HomePage = () => {
     // Track which windows have been opened (mounted) at least once
     const [mountedWindows, setMountedWindows] = useState({
+        disclaimer: true,
         portrait: true,
         infoText: true,
         aboutMe: false,
@@ -31,7 +33,8 @@ const HomePage = () => {
         aboutMe: false,
         tableau: false,
         workingOn: false,
-        gallery: false
+        gallery: false,
+        disclaimer: true
     });
 
     //start menu items
@@ -132,6 +135,14 @@ const HomePage = () => {
                     <Gallery
                         title="Photo Gallery"
                         onClose={() => handleWindowClose("gallery")}
+                    />
+                </div>
+            )}
+            {mountedWindows.disclaimer && (
+                <div style={{ display: windowVisibility.disclaimer ? 'block' : 'none' }}>
+                    <Disclaimer
+                        title="Disclaimer"
+                        onClose={() => handleWindowClose("disclaimer")}
                     />
                 </div>
             )}
