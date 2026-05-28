@@ -7,14 +7,16 @@ const importImages = () => {
         { eager: true, import: 'default' }
     );
 
-    const sortedImages = Object.entries(images)
-        .sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }))
-        .map(([, path]) => path);
+    // Sort and organize by filtering the original keys (file paths), not the processed URLs
+    const sortedEntries = Object.entries(images)
+        .sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }));
 
-    // Organize images by location prefix
+    const sortedImages = sortedEntries.map(([, path]) => path);
+
+    // Organize images by location prefix - filter by original filename
     return {
-        pittsburgh: sortedImages.filter(path => path.includes('pitt')),
-        gary: sortedImages.filter(path => path.includes('gary')),
+        pittsburgh: sortedEntries.filter(([key]) => key.toLowerCase().includes('pitt')).map(([, value]) => value),
+        gary: sortedEntries.filter(([key]) => key.toLowerCase().includes('gary')).map(([, value]) => value),
         all: sortedImages
     };
 };
