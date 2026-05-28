@@ -22,7 +22,7 @@ import TableauEmbed from "./TableauEmbed";
                 </div>
             </div>  
             <div className="window-body" style={{ height: '95%', overflowY: 'scroll' }}>
-                <h5><b>Tableau Visualization: </b>Taken from data recorded by the NOAA, this dashboard shows critical data regarding tornadic activity in the United States in 2023.</h5>
+                <h4><b>Tableau Visualization: </b>Taken from data recorded by the NOAA, this dashboard shows critical data regarding tornadic activity in the United States in 2023.</h4>
                 <TableauEmbed />
             </div>
         </div>  
