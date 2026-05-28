@@ -32,7 +32,7 @@ import codesnippet from "../assets/images/codesnippet.png";
                         <p className="p">Admittedly, this is my third portfolio site, my second using React + Vite. My last two sites handled everything data-wise perfectly, but the styling left a lot to be desired. I had the idea to create a desktop-style site for my third portfolio - which is what you see now! </p>                 
                         <img src={codesnippet} alt="Code Snippet" style={{ width: '100%' }} />
                         <p className="p"><strong>Tools Used: </strong>Visual Studio Code, Vite + React, Javascript, CSS, HTML</p>
-                        <p className="p">Currently working on (March 2026) - Too much to even list :P</p>   
+                        <p className="p">Currently working on (May 2026) - Too much to even list :P</p>   
                     </li>
                     <li className="li">
                         <h2 className="h2">D3 - Spotify Data Visualization</h2>

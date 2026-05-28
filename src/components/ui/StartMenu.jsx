@@ -27,7 +27,7 @@ const StartMenu = ({ onMenuItemSelect, onRequestClose }) => {
             id: "messenger",
             label: "LinkedIn",
             icon: Messenger,
-            href: "https://www.linkedin.com/in/gabriel-sever-dvis/"
+            href: "https://www.linkedin.com/in/tate-dvis/"
         },
         { id: "contact", 
           label: "Contact Me", 
